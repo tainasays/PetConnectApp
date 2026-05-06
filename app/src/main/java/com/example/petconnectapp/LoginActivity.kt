@@ -93,18 +93,32 @@ fun LoginPage(modifier: Modifier = Modifier) {
                 )
             },
                 enabled = email.isNotEmpty() && password.isNotEmpty()
-             ) {
+            ) {
                 Text("Login")
             }
+
+            Spacer(modifier = Modifier.height(12.dp))
+
+            Button(
+                onClick = {
+                    activity.startActivity(
+                        Intent(activity, RegisterActivity::class.java)
+                    )
+                }
+            ) {
+                Text("Criar conta")
+            }}
+            Row(
+
+                modifier = fieldModifier,
+                horizontalArrangement = Arrangement.Center
+            ) {
+            Spacer(modifier = Modifier.width(12.dp))
+
             Button(
                 onClick = { email = ""; password = "" }
             ) {
                 Text("Limpar")
             }
-        }
+        }}
     }
-
-
-}
-
-
