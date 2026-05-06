@@ -1,5 +1,6 @@
 package com.example.petconnectapp
 import androidx.compose.ui.platform.LocalContext
+import android.content.Intent
 import android.app.Activity
 import android.widget.Toast
 import androidx.compose.foundation.layout.*
@@ -10,6 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import android.content.Intent.FLAG_ACTIVITY_SINGLE_TOP
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -47,7 +49,9 @@ fun LoginPage(modifier: Modifier = Modifier) {
 
     val fieldModifier = Modifier.fillMaxWidth(0.9f)
     Column(
-        modifier = modifier.padding(24.dp).fillMaxSize(),
+        modifier = modifier
+            .padding(24.dp)
+            .fillMaxSize(),
 
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
@@ -80,7 +84,13 @@ fun LoginPage(modifier: Modifier = Modifier) {
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
             Button( onClick = {
-                Toast.makeText(activity, "Login OK!", Toast.LENGTH_LONG).show()
+                Toast.makeText(activity, "Login OK!", Toast.LENGTH_LONG).show();
+                activity.startActivity(
+                    Intent(activity, MainActivity::class.java).setFlags(
+                        FLAG_ACTIVITY_SINGLE_TOP
+
+                    )
+                )
             },
                 enabled = email.isNotEmpty() && password.isNotEmpty()
              ) {
