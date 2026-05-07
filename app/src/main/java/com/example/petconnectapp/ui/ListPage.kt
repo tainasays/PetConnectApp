@@ -3,7 +3,6 @@ package com.example.petconnectapp.ui
 import android.app.Activity
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.toMutableStateList
-import androidx.compose.runtime.toMutableStateList
 import android.widget.Toast
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -27,15 +26,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.petconnectapp.model.City
-import com.example.petconnectapp.model.getCities
+import com.example.petconnectapp.MainViewModel
+import com.example.petconnectapp.getCities
+import com.example.petconnectapp.ui.CityItem
 
 @Composable
-fun ListPage(modifier: Modifier = Modifier) {
+fun ListPage(modifier: Modifier = Modifier,
+             viewModel: MainViewModel) {
 
-    val cityList = remember {
-        getCities().toMutableStateList()
-    }
+    val cityList = viewModel.cities
 
     val activity = LocalContext.current as Activity
 
@@ -53,11 +54,7 @@ fun ListPage(modifier: Modifier = Modifier) {
 
                 onClose = {
 
-                    Toast.makeText(
-                        activity,
-                        "Fechar ${city.name}",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    viewModel.remove(city)
                 },
 
                 onClick = {

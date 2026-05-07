@@ -6,6 +6,3 @@ data class City (
     val location: String? = null
 )
 
-public fun getCities() = List(20) { i ->
-    City(name = "Cidade $i", weather = "Carregando clima...")
-}
