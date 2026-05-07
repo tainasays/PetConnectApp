@@ -20,7 +20,7 @@ import androidx.compose.ui.tooling.preview.Preview
 fun HomePage(modifier: Modifier = Modifier) {
     Column(
         modifier = modifier.fillMaxSize()
-            .background(Color.Yellow)
+            .background(Color.LightGray)
             .wrapContentSize(Alignment.Center)
     ) {
         Text(
