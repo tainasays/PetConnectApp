@@ -1,0 +1,17 @@
+@ComposableMapPage
+fun HomePage(modifier: Modifier = Modifier) {
+    Column(
+        modifier = modifier.fillMaxSize()
+            .background(Color.Blue)
+            .wrapContentSize(Alignment.Center)
+    ) {
+        Text(
+            text = "Mapa",
+            fontWeight = FontWeight.Bold,
+            color = Color.Gray,
+            modifier = modifier.align(CenterHorizontally),
+            textAlign = TextAlign.Center,
+            fontSize = 20.sp
+        )
+    }
+}
